@@ -6,11 +6,9 @@ import { Provider } from 'react-redux'
 
 // ..
 import configureStore from './store/configureStore'
-// import initialState from './store/initialState'
 import App from './containers/app'
 
 // ...
-// const store = configureStore(initialState)
 const store = configureStore()
 // ...
 render(
