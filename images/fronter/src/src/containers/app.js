@@ -8,6 +8,8 @@ class App extends React.Component {
     return (
         <div>
             Привет из App, { this.props.user }!
+            <br/>
+            Lets go, { this.props.todo } ...
         </div>
     )
   }
@@ -15,14 +17,17 @@ class App extends React.Component {
 
 // ..
 const mapStateToProps = (state) => {
+    // ...
     return {
-        user: state.user
+        user: state.user,
+        todo: state.todo        
     }
 }
 
 // ..
 App.propTypes = {
-    user: PropTypes.string.isRequired  
+    user: PropTypes.string.isRequired,
+    todo: PropTypes.string.isRequired    
 }
 
 // ..

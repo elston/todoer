@@ -1,9 +1,11 @@
-// ..
-const initialState = {
-    user: 'John Lennon'
-};
+import { combineReducers } from 'redux'
 
 // ..
-export default (state = initialState) => {
-    return state;
-}
+import user from './user'
+import todo from './todo'
+
+// ..
+export default combineReducers({
+  user,
+  todo
+})
