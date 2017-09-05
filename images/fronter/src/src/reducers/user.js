@@ -6,7 +6,7 @@ const initialState = 'John Lennon'
 
 // ..
 const user = (state = initialState) => {
-    return state;
+    return state
 }
 
 // ..

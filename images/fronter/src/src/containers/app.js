@@ -3,16 +3,24 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+// ...
+import User from '../components/User'
+import Todo from '../components/Todo'
+
 class App extends React.Component {
-  render() {
-    return (
-        <div>
-            Привет из App, { this.props.user }!
-            <br/>
-            Lets go, { this.props.todo } ...
-        </div>
-    )
-  }
+    render() {
+
+        // ..
+        const { user, todo } = this.props        
+
+        // ..
+        return (
+            <div>
+                <User user={ user } />
+                <Todo todo={ todo } />
+            </div>
+        )
+    }
 }
 
 // ..

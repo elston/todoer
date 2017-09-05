@@ -6,6 +6,6 @@ import todo from './todo'
 
 // ..
 export default combineReducers({
-  user,
-  todo
+    user,
+    todo
 })

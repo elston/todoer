@@ -3,7 +3,7 @@ const initialState = 'teach english'
 
 // ..
 const todo = (state = initialState) => {
-    return state;
+    return state
 }
 
 // ..
