@@ -95,7 +95,7 @@ bootstrap_storage:
 		-p $(PROJECT) \
 		-f bootstrap.yml \
 		run \
-		--rm \
+		-d \
 		storage
 
 

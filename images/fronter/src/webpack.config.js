@@ -8,10 +8,13 @@ var config = {
     // ****************************************
     // ..main
     // ****************************************    
+    // ..
     devtool: 'inline-source-map',
+    // ..
     entry: [
-        __dirname + "/app/App.jsx"
+        __dirname + "/src/index.js"
     ],
+    // ...
     output: {
         path: __dirname + "/public",
         filename: "bundle.js"
@@ -41,7 +44,7 @@ var config = {
         inline: true,
         colors: true,
         historyApiFallback: true,
-        contentBase: __dirname + '/public/',
+        contentBase: __dirname + '/',
         // ...
         host: process.env.DEVSERVER_HOST,
         port: process.env.DEVSERVER_PORT,
