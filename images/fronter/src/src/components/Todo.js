@@ -19,9 +19,26 @@ class Todo extends React.Component {
         return (
             <div>
                 <p>
-                    <button onClick={::this.onTodoBtnClick}>teach english</button>
-                    <button onClick={::this.onTodoBtnClick}>teach doiche</button>
-                    <button onClick={::this.onTodoBtnClick}>teach spanish</button>
+                    <button 
+                        onClick={
+                            ::this.onTodoBtnClick
+                        }
+                        >teach english
+                    </button>
+                    {' '}
+                    <button 
+                        onClick={
+                            ::this.onTodoBtnClick
+                        }
+                        >teach doiche
+                    </button>
+                    {' '}                    
+                    <button 
+                        onClick={
+                            ::this.onTodoBtnClick
+                        }
+                        >teach spanish
+                    </button>
                 </p>
                 <p>
                     Тебе осталось { todo } ...

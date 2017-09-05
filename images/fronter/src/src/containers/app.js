@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => {
 // ..
 App.propTypes = {
     user: PropTypes.string.isRequired,
-    // todo: PropTypes.string.isRequired    
+    todo: PropTypes.string.isRequired    
 }
 
 // ..
