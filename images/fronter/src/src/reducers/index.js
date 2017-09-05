@@ -1,9 +1,9 @@
 // ..
 const initialState = {
-  user: 'Unknown User'
+    user: 'John Lennon'
 };
 
 // ..
-export default function userstate(state = initialState) {
+export default (state = initialState) => {
     return state;
 }
