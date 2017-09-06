@@ -3,12 +3,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // ..
+import { MONDAY, THURSDAY, WEDNESDAY } from '../constants/todo'
+
+// ..
 class Todo extends React.Component {
 
     // ..
     onTodoBtnClick(e) {
-        // console.log(e.target.innerText)
-        this.props.setTodo(e.target.innerText)
+        e.preventDefault()        
+        // ..
+        const { setTodo } = this.props        
+        console.log(e.target)
+        setTodo(e.target.innerText)
     }
 
     // .
@@ -20,24 +26,18 @@ class Todo extends React.Component {
             <div>
                 <p>
                     <button 
-                        onClick={
-                            ::this.onTodoBtnClick
-                        }
-                        >teach english
+                        onClick={ ::this.onTodoBtnClick }
+                        todoTarget={ MONDAY }
+                    >
+                        Понедельник
                     </button>
                     {' '}
-                    <button 
-                        onClick={
-                            ::this.onTodoBtnClick
-                        }
-                        >teach doiche
+                    <button onClick={ ::this.onTodoBtnClick }>
+                        Вторник
                     </button>
                     {' '}                    
-                    <button 
-                        onClick={
-                            ::this.onTodoBtnClick
-                        }
-                        >teach spanish
+                    <button onClick={ ::this.onTodoBtnClick }>
+                        Среда
                     </button>
                 </p>
                 <p>

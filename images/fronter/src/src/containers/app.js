@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 
 // ...
-import User from '../components/User'
-import Todo from '../components/Todo'
+import User from '../components/user'
+import Todo from '../components/todo'
 
 // ...
-import * as todoActions from '../actions/todoActions'
+import * as todoActions from '../actions/todo'
 
 class App extends React.Component {
     // ..
@@ -17,7 +17,8 @@ class App extends React.Component {
 
         // ..
         const { user, todo } = this.props        
-        const { setTodo } = this.props.todoActions
+        // const { setTodo } = this.props.todoActions                
+        const { setTodo } = this.props.actions        
 
         // ..
         return (
@@ -38,9 +39,25 @@ const mapStateToProps = (state) => {
     }
 }
 
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         todoActions: bindActionCreators(todoActions, dispatch)
+//     }
+// }
+
 const mapDispatchToProps = (dispatch) => {
+    // ..
+    const { setTodo } = todoActions
+    // ..
+    const actions = {
+        setTodo: (todo) => {
+            dispatch(setTodo(todo))
+        }
+    }
+
+    // ..
     return {
-        todoActions: bindActionCreators(todoActions, dispatch)
+        actions:actions
     }
 }
 

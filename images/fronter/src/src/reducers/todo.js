@@ -1,3 +1,4 @@
+import { SET_TODO, SET_TODO_SUCCESS } from '../constants/todo'
 // ..
 const initialState = 'teach english'
 
@@ -9,7 +10,7 @@ const todo = (state = initialState, action) => {
     switch (action.type) {
 
         // ..
-        case 'SET_TODO':
+        case SET_TODO:
             // return { ...state, todo: action.payload }
             console.log(state)
             return action.payload
