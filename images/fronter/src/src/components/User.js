@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 
 // ..
 class User extends React.Component {
+
+    // ...
     render() {
         // ..
         const { user } = this.props

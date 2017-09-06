@@ -1,27 +1,17 @@
-// // ..
-// const initialState = 'teach english'
-
-// // ..
-// const todo = (state = initialState) => {
-//     return state
-// }
-
-// // ..
-// export default todo
-
 // ..
 const initialState = 'teach english'
 
-// 
+// ..
 const todo = (state = initialState, action) => {
 
     // ...
-    console.log(state, action.type, action.payload)
+    // console.log(state, action.type, action.payload)
     switch (action.type) {
 
         // ..
         case 'SET_TODO':
             // return { ...state, todo: action.payload }
+            console.log(state)
             return action.payload
 
         // ..
@@ -30,4 +20,5 @@ const todo = (state = initialState, action) => {
     }
 }
 
+// ...
 export default todo

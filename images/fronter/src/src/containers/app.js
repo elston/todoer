@@ -22,19 +22,8 @@ class App extends React.Component {
         // ..
         return (
             <div>
-                <User 
-                    user={ 
-                        user 
-                    } 
-                />
-                <Todo 
-                    todo={ 
-                        todo 
-                    }
-                    setTodo={
-                        setTodo
-                    } 
-                />
+                <User user={ user } />
+                <Todo todo={ todo } setTodo={setTodo} />
             </div>
         )
     }

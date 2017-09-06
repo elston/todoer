@@ -7,5 +7,3 @@ export const setTodo = (todo) => {
     }
 }
 
-// ...
-// export setTodo

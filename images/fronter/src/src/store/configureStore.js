@@ -5,7 +5,7 @@ const configureStore = (initialState) => {
     // ..
     const store = createStore(rootReducer, initialState)
 
-    // ..
+    // ..herota
     if (module.hot) {
         module.hot.accept('../reducers', () => {
             const nextRootReducer = require('../reducers')
