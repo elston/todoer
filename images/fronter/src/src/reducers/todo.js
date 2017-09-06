@@ -1,6 +1,9 @@
+// ...
 import { SET_TODO, SET_TODO_SUCCESS } from '../constants/todo'
 // ..
-const initialState = 'teach english'
+const initialState = {
+    name:'teach english'
+}
 
 // ..
 const todo = (state = initialState, action) => {
@@ -11,9 +14,21 @@ const todo = (state = initialState, action) => {
 
         // ..
         case SET_TODO:
-            // return { ...state, todo: action.payload }
             console.log(state)
-            return action.payload
+            return { 
+                ...state, 
+                week: action.payload,
+                fetching: true
+            }
+
+        // ..
+        case SET_TODO_SUCCESS:
+            console.log(state)
+            return { 
+                ...state, 
+                name: action.payload,
+                fetching: false
+            }
 
         // ..
         default:

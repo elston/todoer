@@ -19,8 +19,9 @@ class TodoButton extends React.Component {
 
         // ..
         const { descr, action } = this.props
-        const todo_text = TODO_LIST[descr]
-        action(todo_text)
+        // const todo_text = TODO_LIST[descr]
+        // action(todo_text)
+        action(descr)        
     }
 
     // ..

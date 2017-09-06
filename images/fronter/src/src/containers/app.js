@@ -16,7 +16,7 @@ class App extends React.Component {
     render() {
 
         // ..
-        const { user, todo } = this.props        
+        const { user, todo } = this.props  
         // const { setTodo } = this.props.todoActions                
         const { setTodo } = this.props.actions        
 
@@ -65,7 +65,7 @@ const mapDispatchToProps = (dispatch) => {
 // ..
 App.propTypes = {
     user: PropTypes.string.isRequired,
-    todo: PropTypes.string.isRequired    
+    todo: PropTypes.object.isRequired    
 }
 
 // ..

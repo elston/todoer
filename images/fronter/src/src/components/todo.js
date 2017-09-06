@@ -15,6 +15,11 @@ class Todo extends React.Component {
     render() {
         // ..
         const { todo, setTodo } = this.props
+        const { name, fetching } = todo
+        let name_text = '... секундочку загружаем'
+        if (!fetching){
+            name_text = name
+        }
         // ..
         return (
             <div>
@@ -33,8 +38,8 @@ class Todo extends React.Component {
                     action={ setTodo }
                 />                
                 <p>
-                    Тебе осталось { todo } ...
-                </p>
+                    Тебе осталось { name_text } ...
+                </p> 
             </div>
         )
 
@@ -43,7 +48,7 @@ class Todo extends React.Component {
 
 // ..
 Todo.propTypes = {
-    todo: PropTypes.string.isRequired,
+    todo: PropTypes.object.isRequired,
     setTodo: PropTypes.func.isRequired
 }
 
