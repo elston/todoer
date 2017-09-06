@@ -8,7 +8,7 @@ Technology
 - Docker
 - MongoDb 3.5
 - Nodejs 8.3
-- React
+- React, Redux
 
 
 Getting Started with Docker and Docker Compose for Local Development
