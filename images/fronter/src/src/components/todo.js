@@ -5,41 +5,33 @@ import PropTypes from 'prop-types'
 // ..
 import { MONDAY, THURSDAY, WEDNESDAY } from '../constants/todo'
 
+// ...
+import TodoButton from './todoButton'
+
 // ..
 class Todo extends React.Component {
-
-    // ..
-    onTodoBtnClick(e) {
-        e.preventDefault()        
-        // ..
-        const { setTodo } = this.props        
-        console.log(e.target)
-        setTodo(e.target.innerText)
-    }
 
     // .
     render() {
         // ..
-        const { todo } = this.props
+        const { todo, setTodo } = this.props
         // ..
         return (
             <div>
-                <p>
-                    <button 
-                        onClick={ ::this.onTodoBtnClick }
-                        todoTarget={ MONDAY }
-                    >
-                        Понедельник
-                    </button>
-                    {' '}
-                    <button onClick={ ::this.onTodoBtnClick }>
-                        Вторник
-                    </button>
-                    {' '}                    
-                    <button onClick={ ::this.onTodoBtnClick }>
-                        Среда
-                    </button>
-                </p>
+                <TodoButton 
+                    descr={ MONDAY }
+                    action={ setTodo }
+                />
+                {' '}
+                <TodoButton 
+                    descr={ THURSDAY }
+                    action={ setTodo }
+                />
+                {' '}                
+                <TodoButton 
+                    descr={ WEDNESDAY }
+                    action={ setTodo }
+                />                
                 <p>
                     Тебе осталось { todo } ...
                 </p>
