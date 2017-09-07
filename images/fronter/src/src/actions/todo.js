@@ -1,37 +1,47 @@
 // ...
+import fetch from 'isomorphic-fetch'
+
+// ..
 import { 
     SET_TODO, 
     SET_TODO_SUCCESS,
     TODO_LIST
 } from '../constants/todo'
 // ..
-// export const setTodo = (name) => {
-//     // ...
-//     return {
-//         type: SET_TODO,
-//         payload: name
-//     }
-// }
 
-export const setTodo = (week) => {
+// ...
+export const setTodo = (day) => {
     // ...
     return (dispatch) => {
         // ..
         dispatch({
             type: SET_TODO,
-            payload: week
+            payload: day
         })
 
         // ..
-        setTimeout(() => {
-            // ..
-            const name = TODO_LIST[week]
-            // ..
+        // setTimeout(() => {
+        //     // ..
+        //     const name = TODO_LIST[day]
+        //     // ..
+        //     dispatch({
+        //         type: SET_TODO_SUCCESS,
+        //         payload: name
+        //     })
+        // }, 1000)    
+
+        // ...
+        fetch('/api/todo/'+day)
+        .then(req => {
+            return req.json()
+        })
+        .then(json => {
             dispatch({
                 type: SET_TODO_SUCCESS,
-                payload: name
+                payload: json.name
             })
-        }, 1000)        
+        })        
+
     }
 }
 

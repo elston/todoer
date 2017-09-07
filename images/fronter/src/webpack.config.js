@@ -49,10 +49,16 @@ var config = {
         host: process.env.DEVSERVER_HOST,
         port: process.env.DEVSERVER_PORT,
         // ..
-        '/api/**': {
+        // '/api/*': {
+        //     target: 'http://backer:8000',
+        //     secure: false
+        // },        
+        proxy: {
+          '/api*': {
             target: 'http://backer:8000',
             secure: false
-        },        
+          }
+        }        
     },
 }
 

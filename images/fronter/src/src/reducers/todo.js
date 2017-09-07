@@ -14,16 +14,16 @@ const todo = (state = initialState, action) => {
 
         // ..
         case SET_TODO:
-            console.log(state)
+            // console.log(state)
             return { 
                 ...state, 
-                week: action.payload,
+                day: action.payload,
                 fetching: true
             }
 
         // ..
         case SET_TODO_SUCCESS:
-            console.log(state)
+            // console.log(state)
             return { 
                 ...state, 
                 name: action.payload,

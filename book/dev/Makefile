@@ -153,6 +153,7 @@ shell_fronter:
 	@docker-compose \
 		-p $(PROJECT) \
 		-f run.yml \
+		-f shell.yml \
 		run \
 		--rm \
 		--service-ports \

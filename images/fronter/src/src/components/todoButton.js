@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 
 // ..
-import { TODO_WEEK, TODO_LIST } from '../constants/todo'
+import { TODO_WEEK } from '../constants/todo'
 
 // ..
 class TodoButton extends React.Component {
@@ -19,8 +19,6 @@ class TodoButton extends React.Component {
 
         // ..
         const { descr, action } = this.props
-        // const todo_text = TODO_LIST[descr]
-        // action(todo_text)
         action(descr)        
     }
 
