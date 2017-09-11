@@ -41,18 +41,17 @@ var config = {
     // ..devServer
     // ****************************************    
     devServer: {
+        // ...
         inline: true,
         colors: true,
         historyApiFallback: true,
         contentBase: __dirname + '/',
+
         // ...
         host: process.env.DEVSERVER_HOST,
         port: process.env.DEVSERVER_PORT,
+
         // ..
-        // '/api/*': {
-        //     target: 'http://backer:8000',
-        //     secure: false
-        // },        
         proxy: {
           '/api*': {
             target: 'http://backer:8000',
