@@ -4,7 +4,7 @@ import React from 'react'
 export default () => (
     <div>
         <div>
-            Раздел /signup
+            Раздел signin
         </div>
     </div>
 )

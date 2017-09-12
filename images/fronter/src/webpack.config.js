@@ -12,7 +12,7 @@ var config = {
     devtool: 'inline-source-map',
     // ..
     entry: [
-        __dirname + "/src/index.js"
+        __dirname + "/app"
     ],
     // ...
     output: {
