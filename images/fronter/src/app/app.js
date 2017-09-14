@@ -11,9 +11,9 @@ export default class App extends Component {
                 <div>Hello from router!! </div>
                 <hr/>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/signin">Signin</Link></li>
-                    <li><Link to="/signup">Signup</Link></li>
+                    <li><Link to="/">Домой</Link></li>
+                    <li><Link to="/signin">Вход</Link></li>
+                    <li><Link to="/signup">Регистрация</Link></li>
                 </ul>
                 <hr/>
                 <div>{renderRoutes(this.props.route.routes)}</div>

@@ -31,9 +31,12 @@ var config = {
             query: {
                 presets: ['es2015', 'stage-0', 'react']
             }
+        // },{
+              // test: /\less$/,
+              // loader: "style!css!less"
         },{
-              test: /\less$/,
-              loader: "style!css!less"
+            test: /\.scss$/,
+            loaders: [ 'style', 'css', 'sass' ]
         }]
     },
 
@@ -59,41 +62,43 @@ var config = {
           }
         }        
     },
+
+
 }
 
 
-/*
- * production
- */
-if (process.env.NODE_ENV === 'production') {
+// /*
+//  * production
+//  */
+// if (process.env.NODE_ENV === 'production') {
 
-    // ****************************************
-    // ..main
-    // ****************************************        
-    config.devtool = false;
+//     // ****************************************
+//     // ..main
+//     // ****************************************        
+//     config.devtool = false;
 
 
-    // ****************************************
-    // ..plugins
-    // ****************************************            
-    config.plugins = [
+//     // ****************************************
+//     // ..plugins
+//     // ****************************************            
+//     config.plugins = [
 
-        // ..1. OccurenceOrderPlugin
-        new webpack.optimize.OccurenceOrderPlugin(),
+//         // ..1. OccurenceOrderPlugin
+//         new webpack.optimize.OccurenceOrderPlugin(),
 
-        // ..2. UglifyJsPlugin
-        new webpack.optimize.UglifyJsPlugin({
-            comments: false
-        }),
+//         // ..2. UglifyJsPlugin
+//         new webpack.optimize.UglifyJsPlugin({
+//             comments: false
+//         }),
 
-        // ..3. DefinePlugin
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production')
-            }
-        })
-    ];
-};
+//         // ..3. DefinePlugin
+//         new webpack.DefinePlugin({
+//             'process.env': {
+//                 NODE_ENV: JSON.stringify('production')
+//             }
+//         })
+//     ];
+// };
 
 
 /*

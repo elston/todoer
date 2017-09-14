@@ -9,6 +9,7 @@ import { renderRoutes } from 'react-router-config'
 // ..
 import configureStore from './store'
 import routes from './routes'
+import './bundle.scss'
 
 // ..
 const store = configureStore()

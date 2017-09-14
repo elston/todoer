@@ -2,10 +2,10 @@
 import { combineReducers } from 'redux'
 
 // ..
-// import user from './user'
-// import todo from './todo'
+import auth from './auth/reducers'
 
 // ..
-export default combineReducers({
-    // user, todo
-})
+const reducers = { auth }
+// ..
+// export default combineReducers({ auth })
+export default combineReducers(reducers)

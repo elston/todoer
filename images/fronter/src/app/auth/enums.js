@@ -1,0 +1,11 @@
+// ..AUTH
+export const AUTH_USER = 'AUTH_USER_SUCCESS'
+export const AUTH_USER_FAILURE = 'AUTH_USER_FAILURE'
+
+// UNAUTH
+export const UNAUTH_USER = 'UNAUTH_USER'
+
+// ..signup
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
+export const SIGNUP_RESEND_FAILURE = 'SIGNUP_RESEND_FAILURE'
