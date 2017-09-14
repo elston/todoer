@@ -44,6 +44,14 @@ make bootstrap_all
 make shell_mongoshell
 ```
 
+```
+mongo storage:27017/admin -u adminmaster -p passmaster
+```
+
+```
+mongo storage:27017/todoer -u usermaster -p passmaster
+```
+
 
 After that we have 
 --------------------------------------------------------------------

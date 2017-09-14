@@ -1,1 +1,6 @@
-@import './auth/components/styles/form'
+@import './styles/normalize';
+@import './styles/variables';
+@import './styles/mixins';
+@import './styles/global';
+@import './styles/form';
+// @import './auth/components/styles/form';

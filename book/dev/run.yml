@@ -42,11 +42,11 @@ services:
       - netmain
     depends_on:
       - storage      
-    environment:
-      - DB_ADMIN_USER=${DB_ADMIN_USER}
-      - DB_ADMIN_PASSWORD=${DB_ADMIN_PASSWORD}      
+    # environment:
+    #   - DB_ADMIN_USER=${DB_ADMIN_USER}
+    #   - DB_ADMIN_PASSWORD=${DB_ADMIN_PASSWORD}      
     volumes:      
-      - ../../data:/mongoshell_data
+      # - ../../data:/mongoshell_data
       - ../../images/storage/mongoshell.sh:/usr/local/bin/mongoshell.sh
 
     command: /bin/bash
