@@ -4,19 +4,18 @@ import Lending from './lending/components'
 import Signin from './auth/components/signin'
 import Signup from './auth/components/signup'
 
+// ..
+import { prepRoutes } from './plext/routes'
+import authRoutes from './auth/routes'
+
 // ...
 const routes = [{
     path: '/',
     exact: true,
     component: Lending,
-},{
-    path: '/signin',
-    component: Signin,
-},{
-    path: '/signup',
-    component: Signup,    
-}]
-// ..
+}].concat(
+    prepRoutes('auth',authRoutes)
+)
 
 export default [{
     component: App,

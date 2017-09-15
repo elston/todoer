@@ -12,26 +12,19 @@
 // ...
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
+import { Link } from 'react-router-dom'
 
 // ..
-// const renderField = ({ input, type, placeholder, meta: { touched, error } }) => (
-//     <div className={`input-group ${touched && error ? 'has-error' : ''}`}>
-//         <input type={type} placeholder={placeholder} {...input} />
-//         { touched && error && <div className="form-error">{error}</div> }
-//     </div>
-// )
-
-const renderField = (field) => (
-    <div className="input-row">
-        <input {...field.input} type="text"/>
-        {field.meta.touched && field.meta.error && 
-        <span className="error">{field.meta.error}</span>}
-    </div>
-)
+import { plextForm } from '../../plext/components'
 
 
 // ...
-class Signin extends Component {
+class Signin extends plextForm {
+
+    // ..
+    constructor(props) {
+        super(props)
+    }
 
     // ...
     render(){
@@ -41,18 +34,27 @@ class Signin extends Component {
                 <form>
 
                     {/* Email */}
-                    <Field 
-                        name="email" 
-                        component={renderField} 
-                        type="text" 
-                        placeholder="Email" />
+                    <Field
+                        name="email"
+                        component={this.renderField}
+                        type="text"
+                        placeholder="Email"
+                    />
 
                     {/* Password */}
-                    <Field 
-                        name="password" 
-                        component={renderField} 
-                        type="password" 
-                        placeholder="Password" />                    
+                    <Field
+                        name="password"
+                        component={this.renderField}
+                        type="password"
+                        placeholder="Password"
+                    />
+
+                    {/* Forgot password */}
+                    <div className="password-forgot">
+                        <Link to="/auth/reset-password">
+                            I forgot my password
+                        </Link>
+                    </div>
 
                 </form>
             </div>
