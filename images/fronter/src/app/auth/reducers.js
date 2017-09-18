@@ -11,17 +11,20 @@ export default function(state = {}, action) {
         /**
          * auth
          */
-        case enums.AUTH_USER_SUCCESS:
+        case enums.SIGNIN_SUCCESS:
+            console.log('SIGNIN_SUCCESS')
             return { 
                 ...state, 
                 authenticated: true, 
                 error: {} 
             }
 
-        case enums.AUTH_USER_FAILURE:
+        case enums.SIGNIN_FAIL:
             return { 
                 ...state, 
-                error: { signin: action.payload } 
+                error: { 
+                    signin: action.payload 
+                } 
             }
 
         /**
@@ -34,11 +37,13 @@ export default function(state = {}, action) {
                 error: {} 
             }
 
-        case enums.SIGNUP_FAILURE:
+        case enums.SIGNUP_FAIL:
             return { 
                 ...state, 
                 signup: false, 
-                error: { signup: action.payload } 
+                error: { 
+                    signup: action.payload 
+                } 
             }
 
     }

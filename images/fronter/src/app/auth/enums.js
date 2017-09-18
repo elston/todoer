@@ -1,6 +1,7 @@
 // ..AUTH
-export const AUTH_USER = 'AUTH_USER_SUCCESS'
-export const AUTH_USER_FAILURE = 'AUTH_USER_FAILURE'
+export const SIGNIN_REQUEST = 'SIGNIN_REQUEST'
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
+export const SIGNIN_FAIL = 'SIGNIN_FAIL'
 
 // UNAUTH
 export const UNAUTH_USER = 'UNAUTH_USER'

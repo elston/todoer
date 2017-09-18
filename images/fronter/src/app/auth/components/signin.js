@@ -1,22 +1,12 @@
-// // ..
-// import React from 'react'
-// // ..
-// export default () => (
-//     <div>
-//         <div>
-//             Раздел signin
-//         </div>
-//     </div>
-// )
-
 // ...
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { Link } from 'react-router-dom'
 
 // ..
 import { plextForm } from '../../plext/components'
-
+import * as actions from '../actions'
 
 // ...
 class Signin extends plextForm {
@@ -27,11 +17,23 @@ class Signin extends plextForm {
     }
 
     // ...
+    handleFormSubmit(props) {
+        // ..
+        const { signinUser } = this.props        
+        // ..
+        signinUser(props)
+    }
+
+    // ...
     render(){
+        // ..
+        const { handleSubmit } = this.props
+        // ..
         return (
+            <div className="container">
             <div className="form-container">
                 <h1>Sign in</h1>            
-                <form>
+                <form onSubmit={handleSubmit(::this.handleFormSubmit)}>
 
                     {/* Email */}
                     <Field
@@ -56,15 +58,28 @@ class Signin extends plextForm {
                         </Link>
                     </div>
 
+                    {/* Server error message */}
+                    { this.props.errorMessage && this.props.errorMessage.signin &&
+                        <div className="error-container signin-error">
+                            Oops! { this.props.errorMessage.signin }
+                        </div> 
+                    }
+
+                    {/* Signin button */}
+                    <button type="submit" className="btn">
+                        Sign in
+                    </button>
+
                 </form>
             </div>
+            </div>            
         )
     }
 }
 
 
 // ..
-function validate(formProps) {
+const validate = (formProps) => {
 
     // ..
     const errors = {};
@@ -85,4 +100,12 @@ function validate(formProps) {
 
 
 // ...
-export default reduxForm({ form: 'signin', validate })(Signin)
+const mapStateToProps = (state) => {
+    return { 
+        errorMessage: state.auth.error 
+    }
+}
+
+// ...
+Signin = reduxForm({ form: 'signin', validate })(Signin)
+export default connect(mapStateToProps, actions)(Signin)

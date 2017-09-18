@@ -6,25 +6,36 @@ import * as enums from './enums'
 /**
  * Sign in
  */
-export function signinUser(props) {
-    // ..
-    const { email, password } = props
+export const signinUser = (props) => {
 
     // ..
-    return function (dispatch) {
-        axios.post('/api/auth/signin', { email, password })
-        .then((res) => {
-            localStorage.setItem('user', JSON.stringify(res.data))
-            dispatch({ 
-                type: enums.AUTH_USER_SUCCESS 
-            })
-            // browserHistory.push('/reduxauth/users')
+    const { email, password } = props
+    console.log(email, password)
+    // ..
+    return (dispatch) => {
+
+        dispatch({ 
+            type: enums.SIGNIN_SUCCESS 
         })
-        .catch(() => {
-            dispatch({
-                type: enums.AUTH_USER_FAILURE,
-                payload: "Email or password isn't right",
-            })
-        })
+
+
+        // // ...
+        // axios.post('/api/auth/signin', { email, password })
+        // .then((res) => {
+        //     // ..
+        //     localStorage.setItem('user', JSON.stringify(res.data))
+        //     // ..
+        //     dispatch({ 
+        //         type: enums.SIGNIN_SUCCESS 
+        //     })
+        //     // ...
+        //     // browserHistory.push('/reduxauth/users')
+        // })
+        // .catch(() => {
+        //     dispatch({
+        //         type: enums.SIGNIN_FAIL,
+        //         payload: "Email or password isn't right",
+        //     })
+        // })
     }
 }
