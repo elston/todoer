@@ -1,5 +1,6 @@
 import axios from 'axios'
 // ..
+import { API_URL } from '../config'
 import * as enums from './enums'
 
 
@@ -10,7 +11,7 @@ export const signinUser = (props) => {
 
     // ..
     const { email, password } = props
-    console.log(email, password)
+    console.log(props)
     // ..
     return (dispatch) => {
 
@@ -20,7 +21,7 @@ export const signinUser = (props) => {
 
 
         // // ...
-        // axios.post('/api/auth/signin', { email, password })
+        // axios.post(`${API_URL}/auth/signin`, { email, password })
         // .then((res) => {
         //     // ..
         //     localStorage.setItem('user', JSON.stringify(res.data))

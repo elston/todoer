@@ -70,6 +70,11 @@ services:
       - NODE_ENV=dev
       - SERVER_PORT=8000
       - SERVER_HOST=0.0.0.0
+      # ...
+      - DB_HOST=storage
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}      
     volumes:
       - ../../images/backer/src:/backer
       - ../../images/backer/runserv.sh:/usr/local/bin/runserv.sh
@@ -93,6 +98,8 @@ services:
       - NODE_ENV=dev
       - DEVSERVER_PORT=8080
       - DEVSERVER_HOST=0.0.0.0
+      # ...
+      - API_URL=http://backer:8000
     volumes:
       - ../../images/fronter/src:/fronter
       - ../../images/fronter/runserv.sh:/usr/local/bin/runserv.sh

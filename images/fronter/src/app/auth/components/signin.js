@@ -27,7 +27,7 @@ class Signin extends plextForm {
     // ...
     render(){
         // ..
-        const { handleSubmit } = this.props
+        const { handleSubmit, errorMessage } = this.props
         // ..
         return (
             <div className="container">
@@ -59,9 +59,9 @@ class Signin extends plextForm {
                     </div>
 
                     {/* Server error message */}
-                    { this.props.errorMessage && this.props.errorMessage.signin &&
+                    { errorMessage && errorMessage.signin &&
                         <div className="error-container signin-error">
-                            Oops! { this.props.errorMessage.signin }
+                            Oops! { errorMessage.signin }
                         </div> 
                     }
 
