@@ -12,7 +12,8 @@ var config = {
     devtool: 'inline-source-map',
     // ..
     entry: [
-        __dirname + "/app"
+        'babel-polyfill',
+        __dirname + "/app",
     ],
     // ...
     output: {
@@ -63,6 +64,15 @@ var config = {
         }        
     },
 
+
+    // // ****************************************
+    // // ..plugins
+    // // ****************************************    
+    // plugins: [
+    //     new webpack.DefinePlugin({
+    //         PROCESS_ENV_API_URL: JSON.stringify(process.env.API_URL),
+    //     })    
+    // ],
 
 }
 

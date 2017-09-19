@@ -82,20 +82,15 @@ class Signin extends plextForm {
 const validate = (formProps) => {
 
     // ..
-    const errors = {};
-
+    const errors = {}
     // .
     if(!formProps.email) {
-        errors.email = 'Email is required'
-    }
-
+        errors.email = 'Email is required'}
     // ..
     if(!formProps.password) {
-        errors.password = 'Password is required'
-    }
-
+        errors.password = 'Password is required'}
     // ..
-    return errors;
+    return errors
 }
 
 

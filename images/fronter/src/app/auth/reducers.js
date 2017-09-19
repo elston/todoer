@@ -12,7 +12,6 @@ export default function(state = {}, action) {
          * auth
          */
         case enums.SIGNIN_SUCCESS:
-            console.log('SIGNIN_SUCCESS')
             return { 
                 ...state, 
                 authenticated: true, 

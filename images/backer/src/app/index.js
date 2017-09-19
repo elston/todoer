@@ -8,23 +8,29 @@ import compression from 'compression'
 
 // ...
 import * as config from './config'
-import { authRoutes } from './auth/routes'
+import authRoutes from './auth/routes'
 
 // ..
 const app = express()
 
 // ..db
-mongoose.connect(config.dbConfig.db)
+const { uri:db_uri, option:db_opt } = config.dbConfig
+mongoose.connect(db_uri,db_opt)
 mongoose.set('debug', true)
+
 
 // ..main
 app.use(compression())
 app.use(morgan('combined'))
 app.use(cors())
-app.use(bodyParser.json({ type: '*/*' }))
+// app.use(bodyParser.json({ type: '*/*' }))
 
 // ..routes
-app.use('/auth', authRoutes)
+const routes = express.Router()
+// ..
+routes.use('/auth', authRoutes)
+// ..
+app.use('/api', routes)
 
 // ..server
 const port = config.SERVER_PORT
