@@ -11,15 +11,17 @@ export default class App extends Component {
         // ...
         return (
             <div>
-                <div>Hello from router!! </div>
-                <hr/>
+
+                {/*...*/}
                 <ul>
-                    <li><Link to="/">Домой</Link></li>
+                    <li><Link to="/">На главную</Link></li>
                     <li><Link to="/auth/signin">Вход</Link></li>
                     <li><Link to="/auth/signup">Регистрация</Link></li>
                 </ul>
-                <hr/>
+
+                {/*...*/}                
                 <div>{renderRoutes(routes)}</div>
+
             </div>
         )
     }
