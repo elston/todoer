@@ -70,6 +70,14 @@ class Signin extends plextForm {
                         Sign in
                     </button>
 
+                    {/* Signup button */}
+                    <div className="form-bottom">
+                        <p>Dont have an account?</p>
+                        <Link to="/auth/signup">
+                            Click here to sign up
+                        </Link>
+                    </div>
+
                 </form>
             </div>
             </div>            

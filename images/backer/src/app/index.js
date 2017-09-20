@@ -8,7 +8,7 @@ import compression from 'compression'
 
 // ...
 import * as config from './config'
-import authRoutes from './auth/routes'
+import routes from './routes'
 
 // ..
 const app = express()
@@ -23,13 +23,9 @@ mongoose.set('debug', true)
 app.use(compression())
 app.use(morgan('combined'))
 app.use(cors())
-// app.use(bodyParser.json({ type: '*/*' }))
+app.use(bodyParser.json({ type: '*/*' }))
 
 // ..routes
-const routes = express.Router()
-// ..
-routes.use('/auth', authRoutes)
-// ..
 app.use('/api', routes)
 
 // ..server

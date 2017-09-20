@@ -58,7 +58,7 @@ var config = {
         // ..
         proxy: {
           '/api*': {
-            target: 'http://backer:8000',
+            target: process.env.API_URL_WEBPACK,
             secure: false
           }
         }        

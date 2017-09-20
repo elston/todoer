@@ -99,7 +99,8 @@ services:
       - DEVSERVER_PORT=8080
       - DEVSERVER_HOST=0.0.0.0
       # ...
-      - API_URL=http://backer:8000
+      - API_URL_WEBPACK=http://backer:8000      
+      - API_URL=http://localhost:8000
     volumes:
       - ../../images/fronter/src:/fronter
       - ../../images/fronter/runserv.sh:/usr/local/bin/runserv.sh

@@ -8,8 +8,8 @@ import authRoutes from './auth/routes'
 
 // ...
 const routes = []
-.concat(prepRoutes('',lendingRoutes))
-.concat(prepRoutes('auth',authRoutes))
+.concat(prepRoutes('/',lendingRoutes))
+.concat(prepRoutes('/auth',authRoutes))
 
 // ...
 export default [{
