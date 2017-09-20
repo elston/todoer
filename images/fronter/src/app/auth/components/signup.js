@@ -23,13 +23,12 @@ import * as actions from '../actions'
 // ..
 class Signup extends plextForm {
 
-    // ...
-    // handleFormSubmit(props) {
-    //     // ..
-    //     const { signupUser } = this.props        
-    //     // ..
-    //     signupUser(props)
-    // }
+    //...
+    handleFormSubmit(props) {
+        // ..
+        const { signupUser } = this.props        
+        signupUser(props)
+    }
 
     // ..
     render(){
@@ -41,69 +40,73 @@ class Signup extends plextForm {
             <div className="container">
             <div className="form-container">
 
-                {/* title */}
-                <h1>Sign up</h1>
+            {/* title */}
+            <h1>Sign up</h1>
 
-                {/* Firstname */}
-                <Field 
-                    name="firstname" 
-                    component={this.renderField} 
-                    type="text" 
-                    placeholder="First name" 
-                />
+            {/* title */}
+            <form onSubmit={handleSubmit(::this.handleFormSubmit)}>
 
-                {/* Lastname */}
-                <Field 
-                    name="lastname" 
-                    component={this.renderField} 
-                    type="text" 
-                    placeholder="Last name" 
-                />
+            {/* Firstname */}
+            <Field 
+                name="firstname" 
+                component={this.renderField} 
+                type="text" 
+                placeholder="First name" 
+            />
 
-                {/* Email */}
-                <Field 
-                    name="email" 
-                    component={this.renderField} 
-                    type="text" 
-                    placeholder="Email" 
-                />
+            {/* Lastname */}
+            <Field 
+                name="lastname" 
+                component={this.renderField} 
+                type="text" 
+                placeholder="Last name" 
+            />
 
-                {/* Password */}
-                <Field 
-                    name="password" 
-                    component={this.renderField} 
-                    type="password" 
-                    placeholder="Password" 
-                />
+            {/* Email */}
+            <Field 
+                name="email" 
+                component={this.renderField} 
+                type="text" 
+                placeholder="Email" 
+            />
 
-                {/* Repassword */}
-                <Field 
-                    name="repassword" 
-                    component={this.renderField} 
-                    type="password" 
-                    placeholder="Repeat Password" 
-                />
+            {/* Password */}
+            <Field 
+                name="password" 
+                component={this.renderField} 
+                type="password" 
+                placeholder="Password" 
+            />
 
-                {/* Server error message */}
-                { errorMessage && errorMessage.signup &&
-                    <div className="error-container">
-                        Oops! { errorMessage.signup }
-                    </div> 
-                }
+            {/* Repassword */}
+            <Field 
+                name="repassword" 
+                component={this.renderField} 
+                type="password" 
+                placeholder="Repeat Password" 
+            />
 
-                {/* Submit button */}
-                <button type="submit" className="btn">
-                    Sign up
-                </button>
+            {/* Server error message */}
+            { errorMessage && errorMessage.signup &&
+                <div className="error-container">
+                    Oops! { errorMessage.signup }
+                </div> 
+            }
 
-                {/* Sign in button */}
-                <div className="form-bottom">
-                    <p>Already signed up?</p>
-                    <Link to="/auth/signin">
-                        Click here to sign in
-                    </Link>
-                </div>
+            {/* Submit button */}
+            <button type="submit" className="btn">
+                Sign up
+            </button>
 
+            {/* Sign in button */}
+            <div className="form-bottom">
+                <p>Already signed up?</p>
+                <Link to="/auth/signin">
+                    Click here to sign in
+                </Link>
+            </div>
+            
+            </form>
             </div>
             </div>            
         )
@@ -158,14 +161,13 @@ const validate = props => {
 }
 
 
-// // ...
-// const mapStateToProps = (state) => {
-//     return { 
-//         errorMessage: state.auth.error 
-//     }
-// }
+// ...
+const mapStateToProps = (state) => {
+    return { 
+        errorMessage: state.auth.error 
+    }
+}
 
 // ...
 Signup = reduxForm({ form: 'signup', validate })(Signup)
-export default Signup
-// export default connect(mapStateToProps, actions)(Signup)
+export default connect(mapStateToProps, actions)(Signup)

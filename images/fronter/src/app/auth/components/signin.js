@@ -20,7 +20,6 @@ class Signin extends plextForm {
     handleFormSubmit(props) {
         // ..
         const { signinUser } = this.props        
-        // ..
         signinUser(props)
     }
 
