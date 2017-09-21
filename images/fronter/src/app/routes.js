@@ -1,20 +1,13 @@
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 // ..
-import App from './app'
-import { prepRoutes } from './plext/routes'
+import lendingApp from './lending/components/app'
+import authApp from './auth/components/app'
 
 // ..
-import lendingRoutes from './lending/routes'
-import authRoutes from './auth/routes'
-
-// ...
-const routes = []
-.concat(prepRoutes('/',lendingRoutes))
-.concat(prepRoutes('/auth',authRoutes))
-
-// ...
-export default [{
-    component: App,
-    routes: routes,
-}]
-
- 
+export default () => (
+  <Switch>
+    <Route exact path='/' component={lendingApp} />
+    <Route path='/auth' component={authApp} />
+  </Switch>
+)

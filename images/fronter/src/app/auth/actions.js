@@ -1,5 +1,7 @@
 import axios from 'axios'
 import fetch from 'isomorphic-fetch'
+import { push } from 'react-router-redux'
+
 // ..
 import * as enums from './enums'
 
@@ -48,6 +50,7 @@ export function signupUser(props) {
             const res = await axios.post('/api/auth/signup', props)
             // const data = res.data
             console.log(res.data)
+            dispatch(push('/'))            
         } catch(err) {
             console.log(err)
             dispatch({

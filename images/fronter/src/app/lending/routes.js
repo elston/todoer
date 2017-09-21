@@ -1,12 +1,10 @@
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 // ..
-import Lending from './components'
+import Home from './components/home'
 
-// ...
-const routes = [{
-    path: '/',
-    exact: true,
-    component: Lending,
-}]
-
-// ...
-export default routes
+export default () => (
+  <Switch>
+    <Route exact path='/' component={Home} />
+  </Switch>
+)

@@ -20,11 +20,11 @@ const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 // ..
 export const dbConfig = {
-    secret: 'SomeRandomSecretString',
-    uri: `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:27017/${DB_NAME}`,
-    option:{
-        useMongoClient: true        
-    }
+  secret: 'SomeRandomSecretString',
+  uri: `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:27017/${DB_NAME}`,
+  option:{
+    useMongoClient: true        
+  }
 }
 
 

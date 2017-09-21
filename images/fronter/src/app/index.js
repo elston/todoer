@@ -2,13 +2,12 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { renderRoutes } from 'react-router-config'
-
+// import { BrowserRouter as Router } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
 
 // ..
-import configureStore from './store'
-import routes from './routes'
+import App from './app'
+import configureStore, { history } from './store'
 import './styles/bundle.scss'
 
 // ..
@@ -17,12 +16,20 @@ const store = configureStore()
 // const store = createStore( () => {}, {})
 // ..
 const root = (
-    <Provider store={store}>
-        <Router>
-            {renderRoutes(routes)}
-        </Router>
-    </Provider>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App/>
+    </ConnectedRouter>
+  </Provider>
 )
+
+// const root = (
+//     <Provider store={store}>
+//         <Router>
+//             <App/>
+//         </Router>
+//     </Provider>
+// )
 
 // ..
 render(root, document.getElementById('root'))
