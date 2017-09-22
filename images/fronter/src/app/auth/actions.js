@@ -20,6 +20,7 @@ export const signinUser = (props) => {
             // dispatch({ type: SIGNIN_SUCCESS })
             // browserHistory.push('/dushboard
             console.log(res.data)
+            dispatch(push('/'))            
         } catch(err) {
             console.log(err)
             dispatch({
@@ -50,7 +51,7 @@ export const signupUser = (props) => {
             const res = await axios.post('/api/auth/signup', props)
             // const data = res.data
             console.log(res.data)
-            dispatch(push('/'))            
+            dispatch(push('/'))
         } catch(err) {
             dispatch({
                 type: enums.SIGNUP_FAIL,

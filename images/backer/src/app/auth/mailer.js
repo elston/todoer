@@ -8,6 +8,7 @@ const from = 'Todoer Team'
 
 export const sendVerificationEmail = async (email, firstName, token) => {
     // ..
+    const href = `${ROOT_URL}/auth/verify-email/?email=${email}&token=${token}`
     const html = `\
     <div style='\
         margin: 0; \
@@ -33,7 +34,7 @@ export const sendVerificationEmail = async (email, firstName, token) => {
                 <p style='color: #5f5f5f;'>\
                     Click the big button below to activate your account.\
                 </p>\
-                <a href='${ROOT_URL}/auth/verify-email/?email=${email}&token=${token}' \
+                <a href='${href}' \
                     style='\
                     background-color: #288feb; \
                     color: #fff; \
@@ -53,7 +54,6 @@ export const sendVerificationEmail = async (email, firstName, token) => {
             </h3>\
         </div>\
     </div>`
-    // ...
     const letter = { from, to: email, subject: 'Verify Email', html }
     // ...
     return await transporter.sendMail(letter)

@@ -37,8 +37,8 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
             if (!isMatch) { 
                 return done(null, false)}
             // ...
-            if (user.role < 1) { 
-                return done(null, false)}
+            // if (user.role < 1) { 
+            //     return done(null, false)}
             // ..
             return done(null, user)
         })
