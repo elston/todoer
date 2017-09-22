@@ -5,7 +5,8 @@ import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { dbConfig } from '../config'
 // ..
 import User from './models'
-import { tokenForUser } from './helpers'
+import { tokenForUser } from './utils'
+import { sendVerificationEmail } from './mailer'
 
 /**
  * pasport
@@ -85,3 +86,86 @@ export const signin = (req, res) => {
     // ..
     res.json({ token: token, firstname, lastname, email })
 }
+
+
+/**
+ * Sign up
+ */
+export const signup = (req, res, next) => {
+    // ..
+    const { firstname, lastname, email, password } = req.body
+    if (!firstname || !lastname || !email || !password) {
+        return res.status(422).send({ error: "all fields are required" })}
+    // ..
+    User.findOne({ email }, (err, existingUser) => {
+        // ...
+        if (err) { 
+            return next(err)}
+        // ...
+        if (existingUser) {
+            return res.status(422).send({ error: "Email is in use" })}
+
+        // ...
+        const user = new User({ firstname, lastname, email, password })
+        user.save(async (err) => {
+            // ..
+            if (err) { 
+                return next(err)}
+            // ...
+            try {
+                await sendVerificationEmail(email, firstname, user.auth.token)
+            } catch(err) {
+                console.log('*******')
+                console.log(err)
+                console.log('*******')                
+                user.remove()                
+                return res.status(422).send({ error: "Email was not sended" })
+            }
+            // ..
+            res.json({ firstname, lastname, email })
+        })
+    })
+}
+
+// // ...
+// try {
+//     sendVerificationEmail(email, firstname, user.auth.token)
+// } catch(err) {
+//     console.log(err)
+//     return res.status(422).send({ error: "Email was not sended" })
+// }
+
+// // ...
+// try {
+//     sendVerificationEmail(email, firstname, user.auth.token)
+// } catch(err) {
+//     console.log(err)
+//     console.log(user)
+//     user.remove()
+//     res.status(422).send({ error: "Email was not sended" })
+// }
+
+// // ...
+// sendVerificationEmail(email, firstname, user.auth.token)
+// .then((res) => {
+//     console.log(res)
+// })   
+// .catch((err) =>{
+//     console.log('error')
+// })
+
+// ...
+// sendVerificationEmail(email, firstname, user.auth.token)
+// .then((res) => {
+//     console.log(res)
+// })   
+// .catch((err) =>{
+//     console.log('error')
+// })            
+
+// try {
+//     const responce = await sendVerificationEmail(email, firstname, user.auth.token)
+//     console.log('responce')
+// }catch(e){
+//     console.log('error')
+// }

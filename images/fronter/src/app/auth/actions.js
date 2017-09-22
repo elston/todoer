@@ -35,9 +35,9 @@ export const signinUser = (props) => {
 /**
  * Sign up
  */
-export function signupUser(props) {
+export const signupUser = (props) => {
     // ...
-    return async function (dispatch) {
+    return async (dispatch) => {
         // axios.post(`${API_URL}/signup`, props)
         // .then(() => {
         // dispatch({ type: SIGNUP_SUCCESS });
@@ -52,12 +52,10 @@ export function signupUser(props) {
             console.log(res.data)
             dispatch(push('/'))            
         } catch(err) {
-            console.log(err)
             dispatch({
-                type: enums.SIGNUP_FAILURE,
-                payload: res.data.error,
+                type: enums.SIGNUP_FAIL,
+                payload: err.response.data.error,
             })
         }
-
     }
 }

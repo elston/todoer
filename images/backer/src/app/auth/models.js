@@ -31,10 +31,9 @@ const userSchema = new Schema({
 })
 
 // ..
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
     // ..
-    const user = this;
-
+    const user = this
     // ...
     bcrypt.genSalt(10, (err, salt) => {
         // ..
@@ -51,18 +50,14 @@ userSchema.pre('save', (next) => {
             tomorrow.setDate(tomorrow.getDate() + 1)
             // ..
             user.password = hash
-            user.auth = { 
-                token: salt, 
-                used: 0, 
-                expires: tomorrow 
-            }
+            user.auth = { token: salt, used: 0, expires: tomorrow }
             next()
         })
     })
 })
 
 // ..
-userSchema.methods.comparePassword = (candidatePassword, callback) => {
+userSchema.methods.comparePassword = function(candidatePassword, callback){
     // ..
     bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
         // ..

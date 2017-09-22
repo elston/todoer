@@ -2,19 +2,21 @@ import express from 'express'
 // ..
 // import { requireSignin } from './passport'
 import { 
-    signin as signinAuth, 
-    requireSignin 
+    requireSignin,
+    signin, 
+    signup,
 } from './controllers'
 
 // ..
 const routes = express.Router()
-routes.post('/signin', requireSignin, signinAuth)
-routes.post('/signup', (req, res) => {
-    console.log(req.body)
-    res.json({
-        name:'teach english'
-    })
-})
+routes.post('/signin', requireSignin, signin)
+routes.post('/signup', signup)
+// routes.post('/signup', (req, res) => {
+//     console.log(req.body)
+//     res.json({
+//         name:'teach english'
+//     })
+// })
 
 // ..
 export default routes

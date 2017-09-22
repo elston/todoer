@@ -5,15 +5,13 @@ import { routerMiddleware } from 'react-router-redux'
 // ..
 import rootReducer from './reducers'
 
-
 // ..
 export const history = createHistory()
 // ...
-export default ({initialState={}}={}) => {
-  // ..middleware
-  const rouware = routerMiddleware(history)
-  const middleware = applyMiddleware(thunk, rouware)
-  // ...store
+export const configureStore = ({initialState={}}={}) => {
+  // ..
+  const router = routerMiddleware(history)
+  const middleware = applyMiddleware(thunk, router)
   const store = createStore(rootReducer, initialState, middleware)
   // ...
   return store

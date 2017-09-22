@@ -15,6 +15,7 @@ const app = express()
 
 // ..db
 const { uri:db_uri, option:db_opt } = config.dbConfig
+mongoose.Promise = global.Promise
 mongoose.connect(db_uri,db_opt)
 mongoose.set('debug', true)
 
