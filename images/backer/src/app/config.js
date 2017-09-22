@@ -31,6 +31,8 @@ export const dbConfig = {
 /*
 * email
 */
+const EMAIL_USER = process.env.EMAIL_USER
+const EMAIL_PASS = process.env.EMAIL_PASS
 /**********************
 *   kubcenter.ru
 ***********************/
@@ -54,8 +56,8 @@ export const dbConfig = {
 //   secure: true,
 //   requireTLS:true,
 //   auth: {
-//     user: 'elstton@mail.ru',
-//     pass: '3NSbIy7dfO',
+//     user: '#####@mail.ru',
+//     pass: '#####',
 //   },
 // }
 
@@ -66,8 +68,8 @@ export const dbConfig = {
 //   // secure: true,
 //   requireTLS:true,
 //   auth: {
-//     user: 'elstton@mail.ru',
-//     pass: '3NSbIy7dfO',
+//     user: '#####@mail.ru',
+//     pass: '#####',
 //   },
 // }
 
@@ -81,8 +83,8 @@ export const dbConfig = {
 //   secure: true,
 //   requireTLS:true,
 //   auth: {
-//     user: 'elstton@rambler.ru',
-//     pass: '3NSbIy7dfO',
+//     user: '#####@rambler.ru',
+//     pass: '#####',
 //   },
 // }
 
@@ -96,7 +98,7 @@ export const emailConfig = {
   secure: true,
   requireTLS:true,
   auth: {
-    user: 'mmegammail@gmail.com',
-    pass: '3NSbIy7dfO',
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
   },
 }
