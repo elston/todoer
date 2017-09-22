@@ -77,6 +77,9 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}      
+      # ..
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}      
     volumes:
       - ../../images/backer/src:/backer
       - ../../images/backer/runserv.sh:/usr/local/bin/runserv.sh

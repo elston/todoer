@@ -6,6 +6,11 @@ export DB_PASSWORD = passmaster
 export DB_ADMIN_USER = adminmaster
 export DB_ADMIN_PASSWORD = passmaster
 
+# ...
+include ../../security.sh
+export EMAIL_USER = $(GMAIL_COM_USER)
+export EMAIL_PASS = $(GMAIL_COM_PASS)
+
 # target:
 # target: all - Default target. Does nothing
 .PHONY: all
