@@ -78,28 +78,28 @@ const EMAIL_PASS = process.env.EMAIL_PASS
 /**********************
 *   rambler.ru
 ***********************/
-// export const emailConfig = {
-//   host: 'smtp.rambler.ru',
-//   port: 465,
-//   secure: true,
-//   requireTLS:true,
-//   auth: {
-//     user: '#####@rambler.ru',
-//     pass: '#####',
-//   },
-// }
+export const emailConfig = {
+  host: 'smtp.rambler.ru',
+  port: 465,
+  secure: true,
+  requireTLS:true,
+  auth: {
+    user: 'elstton@rambler.ru',
+    pass: '3NSbIy7dfO',
+  },
+}
 
 
 /**********************
 *   gmail.com
 ***********************/
-export const emailConfig = {
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  requireTLS:true,
-  auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASS,
-  },
-}
+// export const emailConfig = {
+//   host: 'smtp.gmail.com',
+//   port: 465,
+//   secure: true,
+//   requireTLS:true,
+//   auth: {
+//     user: EMAIL_USER,
+//     pass: EMAIL_PASS,
+//   },
+// }
