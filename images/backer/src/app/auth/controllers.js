@@ -90,80 +90,39 @@ export const signin = (req, res) => {
 /**
  * Sign up
  */
-export const signup = (req, res, next) => {
+export const signup = async (req, res, next) => {
     // ..
     const { firstname, lastname, email, password } = req.body
     if (!firstname || !lastname || !email || !password) {
         return res.status(422).send({ error: "all fields are required" })}
+
     // ..
-    User.findOne({ email }, (err, existingUser) => {
-        // ...
-        if (err) { 
-            return next(err)}
-        // ...
+    try {
+        const existingUser = await User.findOne({ email })
         if (existingUser) {
-            return res.status(422).send({ error: "Email is in use" })}
+            return res.status(422).send({ error: "Email is in use" })}        
+    }catch(err){
+        return next(err)
+    }
 
-        // ...
-        const user = new User({ firstname, lastname, email, password })
-        user.save((err) => {
-            // ..
-            if (err) { 
-                return next(err)}
-            // ...
-            transporter.sendMail(optForSignup(email, firstname, user.auth.token),(err) => { 
-                // ...
-                if (err) { 
-                    console.log('*******')
-                    console.log(err)
-                    console.log('*******')                
-                    user.remove()                
-                    res.status(422).send({ error: "Email was not sended" })
-                    return err
-                } 
-            })
-            // ..
-            res.json({ firstname, lastname, email })
-        })
-    })
+    // ..
+    const user = new User({ firstname, lastname, email, password })
+    try {
+        await user.save()
+    }catch(err){
+        return next(err)
+    }
+
+    // ..
+    const opt = optForSignup(email, firstname, user.auth.token)
+    try {
+        await transporter.sendMail(opt)
+    }catch(err){
+        console.log(err)
+        user.remove()                
+        return res.status(422).send({ error: "Email was not sended" })        
+    }
+
+    // ..
+    res.json({ firstname, lastname, email })    
 }
-
-// /**
-//  * Sign up
-//  */
-// export const signup = (req, res, next) => {
-//     // ..
-//     const { firstname, lastname, email, password } = req.body
-//     if (!firstname || !lastname || !email || !password) {
-//         return res.status(422).send({ error: "all fields are required" })}
-//     // ..
-//     User.findOne({ email }, (err, existingUser) => {
-//         // ...
-//         if (err) { 
-//             return next(err)}
-//         // ...
-//         if (existingUser) {
-//             return res.status(422).send({ error: "Email is in use" })}
-
-//         // ...
-//         const user = new User({ firstname, lastname, email, password })
-//         user.save(async (err) => {
-//             // ..
-//             if (err) { 
-//                 return next(err)}
-//             // ...
-//             try {
-//                 await transporter.sendMail(optForSignup(email, firstname, user.auth.token))
-//             } catch(err) {
-//                 console.log('*******')
-//                 console.log(err)
-//                 console.log('*******')                
-//                 user.remove()                
-//                 return res.status(422).send({ error: "Email was not sended" })
-//             }
-//             // ..
-//             res.json({ firstname, lastname, email })
-//         })
-//     })
-// }
-
