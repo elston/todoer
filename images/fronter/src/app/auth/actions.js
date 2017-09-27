@@ -6,6 +6,17 @@ import { push } from 'react-router-redux'
 import * as enums from './enums'
 
 /**
+ * server errors massage
+ */
+
+export const clearErrors = () => {
+    // ...
+    return async (dispatch) => {
+        await dispatch({ type: enums.CLEAR_SERVER_ERRORS })
+    }
+}
+
+/**
  * Sign in
  */
 export const signinUser = (props) => {
@@ -51,12 +62,13 @@ export const signupUser = (props) => {
             const res = await axios.post('/api/auth/signup', props)
             // const data = res.data
             console.log(res.data)
-            dispatch(push('/'))
+            await dispatch(push('/'))
         } catch(err) {
-            dispatch({
+            await dispatch({
                 type: enums.SIGNUP_FAIL,
                 payload: err.response.data.error,
             })
         }
     }
 }
+

@@ -1,4 +1,3 @@
-// ..
 import nodemailer from 'nodemailer'
 import jwt from 'jwt-simple'
 import { dbConfig, emailConfig, ROOT_URL  } from '../config'

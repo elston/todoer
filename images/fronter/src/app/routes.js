@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 // ..
 import lendingApp from './lending/components/app'
-import authApp from './auth/components/app'
+import authApp from './auth/app'
 
 // ..
 export default () => (

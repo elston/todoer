@@ -36,8 +36,8 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
             if (!isMatch) { 
                 return done(null, false)}
             // ...
-            // if (user.role < 1) { 
-            //     return done(null, false)}
+            if (user.role < 1) { 
+                return done(null, false)}
             // ..
             return done(null, user)
         })
@@ -97,9 +97,9 @@ export const signup = async (req, res, next) => {
         return res.status(422).send({ error: "all fields are required" })}
 
     // ..
+    const existingUser = User.findOne({ email })
     try {
-        const existingUser = await User.findOne({ email })
-        if (existingUser) {
+        if (await existingUser) {
             return res.status(422).send({ error: "Email is in use" })}        
     }catch(err){
         return next(err)

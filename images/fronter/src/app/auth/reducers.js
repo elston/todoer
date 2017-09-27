@@ -9,6 +9,15 @@ export default (state = {}, action) => {
 
 
         /**
+         * server errors massage
+         */
+        case enums.CLEAR_SERVER_ERRORS:
+            return { 
+                ...state, 
+                error: {} 
+            }
+
+        /**
          * auth
          */
         case enums.SIGNIN_SUCCESS:
@@ -44,6 +53,8 @@ export default (state = {}, action) => {
                     signup: action.payload 
                 } 
             }
+
+
 
     }
 

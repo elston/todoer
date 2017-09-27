@@ -1,16 +1,3 @@
-// // ..
-// import React from 'react'
-// // ..
-// export default () => (
-//     <div>
-//         <div>
-//             Раздел signup
-//         </div>
-//     </div>
-// )
-
-
-// ...
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
@@ -21,12 +8,12 @@ import { plextForm } from '../../plext/components'
 import * as actions from '../actions'
 
 // ..
-class Signup extends plextForm {
+class SignupForm extends plextForm {
 
     //...
     handleFormSubmit(props) {
         // ..
-        const { signupUser } = this.props        
+        const { signupUser } = this.props
         signupUser(props)
     }
 
@@ -37,7 +24,6 @@ class Signup extends plextForm {
 
         // ..
         return (
-            <div className="container">
             <div className="form-container">
 
             {/* title */}
@@ -108,7 +94,6 @@ class Signup extends plextForm {
             
             </form>
             </div>
-            </div>            
         )
     }
 
@@ -119,7 +104,10 @@ class Signup extends plextForm {
 const validate = props => {
 
     // ..
-    const errors = {}
+    const errors = {
+
+    }
+    // ..
     const fields = [
         'firstname', 
         'lastname', 
@@ -127,13 +115,11 @@ const validate = props => {
         'password', 
         'repassword'
     ]
-
     // ..
     fields.forEach((f) => {
         if(!(f in props)) {
             errors[f] = `${f} is required`}
     })
-
     // ..
     if(props.firstname && props.firstname.length < 3) {
         errors.firstname = "minimum of 4 characters"}
@@ -169,5 +155,30 @@ const mapStateToProps = (state) => {
 }
 
 // ...
-Signup = reduxForm({ form: 'signup', validate })(Signup)
-export default connect(mapStateToProps, actions)(Signup)
+const ReduxSignupForm = reduxForm({ form: 'signup', validate })(SignupForm)
+export const ConnectedSignupForm = connect(mapStateToProps, actions)(ReduxSignupForm)
+
+// ...
+class Signup extends Component {
+
+    // ..
+    componentWillUnmount(){
+        const { clearErrors } = this.props
+        clearErrors()
+    }
+
+    // ...
+    render(){
+        // ..
+        const ret = (
+            <div className="container">
+                <ConnectedSignupForm/>
+            </div>
+        )
+        // ..
+        return ret
+    }
+
+}
+
+export default connect(null,actions)(Signup)
