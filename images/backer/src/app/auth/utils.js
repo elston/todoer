@@ -30,21 +30,17 @@ export const optForSignup = (email, firstName, token) => {
         margin: 0; \
         padding: 0; \
         width: 100%; \
-        font-family: Trebuchet MS, sans-serif;\
-        '>\
+        font-family: Trebuchet MS, sans-serif;'>\
         <div style='\
             background-color: #f2f2f2; \
-            padding: 45px;\
-            '>\
+            padding: 45px;'>\
             <div style='\
                 background-color: #ffffff; \
                 padding: 40px; \
-                text-align: center;\
-                '>\
+                text-align: center;'>\
                 <h1 style='\
                     color: #5f5f5f; \
-                    margin-bottom: 30px;\
-                    '>\
+                    margin-bottom: 30px;'>\
                     Hi, ${firstName}\
                 </h1>\
                 <p style='color: #5f5f5f;'>\
@@ -58,15 +54,15 @@ export const optForSignup = (email, firstName, token) => {
                     text-decoration: none; \
                     border-radius: 5px; \
                     margin-top: 20px; \
-                    display: inline-block;\
-                    '>Activate Account\
+                    display: inline-block;'>\
+                    Activate Account\
                 </a>\
             </div> \
             <h3 style='\
                 color: #5f5f5f; \
                 text-align: center; \
-                margin-top: 30px;\
-                '>${from}\
+                margin-top: 30px;'>\
+                ${from}\
             </h3>\
         </div>\
     </div>`

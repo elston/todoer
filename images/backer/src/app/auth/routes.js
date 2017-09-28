@@ -1,16 +1,13 @@
 import express from 'express'
 // ..
 // import { requireSignin } from './passport'
-import { 
-    requireSignin,
-    signin, 
-    signup,
-} from './controllers'
+import * as ctrl from './controllers'
 
 // ..
 const routes = express.Router()
-routes.post('/signin', requireSignin, signin)
-routes.post('/signup', signup)
+routes.post('/signin', ctrl.requireSignin, ctrl.signin)
+routes.post('/signup', ctrl.signup)
+routes.post('/resend-verifycode', ctrl.resend_verifycode)
 // routes.post('/signup', (req, res) => {
 //     console.log(req.body)
 //     res.json({

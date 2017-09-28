@@ -9,22 +9,19 @@ import * as enums from './enums'
  * server errors massage
  */
 
-export const clearErrors = () => {
-    // ...
+export const clearErrorsAction = () => {
     return async (dispatch) => {
         await dispatch({ type: enums.CLEAR_SERVER_ERRORS })
     }
 }
 
+
 /**
  * Sign in
  */
-export const signinUser = (props) => {
-    // ..
+export const signinAction = (props) => {
     const { email, password } = props
-    // ...
     return async (dispatch) => {
-        // ...
         try {
             const res = await axios.post('/api/auth/signin', { email, password })
             // localStorage.setItem('user', JSON.stringify(res.data))
@@ -47,22 +44,12 @@ export const signinUser = (props) => {
 /**
  * Sign up
  */
-export const signupUser = (props) => {
-    // ...
+export const signupAction = (props) => {
     return async (dispatch) => {
-        // axios.post(`${API_URL}/signup`, props)
-        // .then(() => {
-        // dispatch({ type: SIGNUP_SUCCESS });
-
-        // browserHistory.push(`/reduxauth/signup/verify-email?email=${props.email}`);
-        // })
-        // .catch(response => dispatch(authError(SIGNUP_FAILURE, response.data.error)));
-
         try {
-            const res = await axios.post('/api/auth/signup', props)
-            // const data = res.data
-            console.log(res.data)
-            await dispatch(push('/'))
+            await axios.post('/api/auth/signup', props)
+            await dispatch({ type: enums.SIGNUP_SUCCESS })
+            await dispatch(push(`/auth/signup/waitconfirm?email=${props.email}`))
         } catch(err) {
             await dispatch({
                 type: enums.SIGNUP_FAIL,
@@ -72,3 +59,19 @@ export const signupUser = (props) => {
     }
 }
 
+/**
+ * Resend verification code
+ */
+export const actionResendVerifycode = (props) => {
+  return async (dispatch) => {
+    try {
+        await axios.post('/api/auth/resend-verifycode', props)
+        await dispatch({ type: enums.RESEND_VERIFYCODE_SUCCESS })
+    }catch(err){
+        await dispatch({
+            type: enums.RESEND_VERIFYCODE_FAIL,
+            payload: err.response.data.error,
+        })
+    }
+  }
+}

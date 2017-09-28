@@ -126,3 +126,43 @@ export const signup = async (req, res, next) => {
     // ..
     res.json({ firstname, lastname, email })    
 }
+
+
+/**
+ * Resend verification code
+ */
+// export const resendVerification = (req, res, next) => {
+//   const { email } = req.body;
+
+//   User.findOne({ email }, (err, user) => {
+//     if (err) { return next(err); }
+
+//     const tomorrow = new Date();
+//     tomorrow.setDate(tomorrow.getDate() + 1);
+
+//     User.findByIdAndUpdate(user.id, { auth: { used: false, token: user.auth.token, expires: tomorrow } }, (err) => {
+//       if (err) { return next(err); }
+
+//       const { firstname, email } = user;
+
+//       sendVerificationEmail(email, firstname, user.auth.token);
+
+//       res.json({ success: true });
+//     });
+//   });
+// };
+
+export const resend_verifycode = async (req, res, next) => {
+    // ..
+    const { email } = req.body
+    try {
+        const existingUser = await User.findOne({ email })        
+        if (!existingUser) {
+            return res.status(422).send({ error: "Email not find" })}        
+    }catch(err){
+        return next(err)
+    }    
+    // ...
+    // ..
+    res.json({ success: true })
+}
