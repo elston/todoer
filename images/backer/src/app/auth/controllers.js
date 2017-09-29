@@ -6,7 +6,7 @@ import { dbConfig } from '../config'
 // ..
 import User from './models'
 import { tokenForUser, transporter, optForSignup } from './utils'
-import { AuthError } from './errors'
+import { ResendCodeError, VerifyCodeError } from './errors'
 /**
  * pasport
  */
@@ -139,7 +139,7 @@ export const resendcode = async (req, res, next) => {
         const { email } = req.body
         const user = await User.findOne({ email })        
         if (!user) {
-            throw new AuthError('User not find') }
+            throw new ResendCodeError('User not find') }
 
         // 2..update
         const tomorrow = new Date()
@@ -157,15 +157,56 @@ export const resendcode = async (req, res, next) => {
         try {
             await transporter.sendMail(opt) 
         } catch(err) {
-            throw new AuthError('Email was not sended')
+            throw new ResendCodeError('Email was not sended')
         }
-        // ..
-    } catch(err) {
-        if (err instanceof AuthError){
-            return res.status(err.code).send(err.message)}
-        return next(err)
-    }    
 
-    // ..
-    res.json({ success: true })
+        // 4..return
+        res.json({ success: true })
+
+    } catch(err) {
+        if (err instanceof ResendCodeError){
+            return res.status(err.code).send(err.message)}
+        return next(err) 
+    }    
+}
+
+/**
+ * Verify verification code
+ */
+export const verifycode = async (req, res, next) => {
+    try {
+
+        // 1..test
+        const { email, token } = req.body;
+        const user = await User.findOne({ email })        
+        // ..
+        if (!user) {
+            throw new VerifyCodeError('User not find') }
+
+        if (user.auth.used) {
+            throw new VerifyCodeError('Account already activated') }
+
+        if (new Date() > user.auth.expires) {
+            throw new VerifyCodeError('link already expired', true) }
+
+        if (token !== user.auth.token) {
+            throw new VerifyCodeError('Token has gone wrong, please sign up again') }
+
+        // 2..update
+        await User.findByIdAndUpdate(user.id, { 
+            role: 1, 
+            auth: { 
+                used: true 
+            } 
+        })  
+
+        // ..3 return 
+        res.json({ success: true })
+
+    } catch(err) {
+        if (err instanceof VerifyCodeError){
+            return res.status(err.code).send({
+                message:err.message, allowresend:err.allowresend })}
+        return next(err) 
+    }
 }

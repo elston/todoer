@@ -6,13 +6,16 @@ export const SIGNIN_FAIL = 'SIGNIN_FAIL'
 // UNAUTH
 export const UNAUTH_USER = 'UNAUTH_USER'
 
-// ..signup
+// ..SIGNUP
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const SIGNUP_FAIL = 'SIGNUP_FAIL'
 
-// ...
+// ...CODE
 export const RESENDCODE_SUCCESS = 'RESENDCODE_SUCCESS'
 export const RESENDCODE_FAIL = 'RESENDCODE_FAIL'
-
 // ...
+export const VERIFYCODE_SUCCESS = 'VERIFYCODE_SUCCESS'
+export const VERIFYCODE_FAIL = 'VERIFYCODE_FAIL'
+
+// ...ERRORS
 export const CLEAR_SERVER_ERRORS = 'CLEAR_SERVER_ERRORS'

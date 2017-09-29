@@ -24,7 +24,7 @@ export const transporter = nodemailer.createTransport(emailConfig)
 export const optForSignup = (email, firstName, token) => {
     // ..
     const from = 'Todoer Team'
-    const href = `${ROOT_URL}/auth/verify-email/?email=${email}&token=${token}`
+    const href = `${ROOT_URL}/auth/signup/verifyconfirm?email=${email}&token=${token}`
     const html = `\
     <div style='\
         margin: 0; \

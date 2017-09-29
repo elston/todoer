@@ -20,9 +20,7 @@ export default (state = {}, action) => {
             return { ...state, authenticated: true, error: {} }
 
         case enums.SIGNIN_FAIL:
-            return { ...state, authenticated: false, error: { 
-                    signin: action.payload 
-            } }
+            return { ...state, authenticated: false, error: { signin: action.payload } }
 
         /**
          * sign up
@@ -31,20 +29,26 @@ export default (state = {}, action) => {
             return { ...state, signup: true, error: {} }
 
         case enums.SIGNUP_FAIL:
-            return { ...state, signup: false, error: { 
-                    signup: action.payload 
-            }}
+            return { ...state, signup: false, error: { signup: action.payload }}
 
         /**
-         * resend verify code
+         * resend code
          */ 
         case enums.RESENDCODE_SUCCESS:
             return { ...state, resendcode:true, error: {}}
 
         case enums.RESENDCODE_FAIL:
-            return { ...state, resendcode:false, error: { 
-                    resendcode: action.payload 
-            }}            
+            return { ...state, resendcode:false, error: { resendcode: action.payload }}
+
+
+        /*
+        *   verify code
+        */
+        case enums.VERIFYCODE_SUCCESS:
+            return { ...state, verifycode:true, error: {}}
+
+        case enums.VERIFYCODE_FAIL:
+            return { ...state, verifycode:false, error: { verifycode: action.payload }}        
 
     }
 

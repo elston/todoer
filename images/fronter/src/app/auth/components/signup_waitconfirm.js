@@ -24,7 +24,7 @@ export default class SignupWaitConfirm extends Component {
 
   componentWillMount() {
     // ..
-    const { signup, history, location:{search} } = this.props
+    const { history, location:{search} } = this.props
     const searchParam = search && new URLSearchParams(search)
     this.email = searchParam && searchParam.get('email')
     // ..
@@ -35,9 +35,9 @@ export default class SignupWaitConfirm extends Component {
   }
 
   resendEmail(props) {
-    const { actionResendVerifycode } = this.props
+    const { actionResendcode } = this.props
     // this.setState({ resend: true })
-    actionResendVerifycode(props)
+    actionResendcode(props)
   }
 
   render() {
@@ -50,12 +50,18 @@ export default class SignupWaitConfirm extends Component {
         <h3>Please confirm the verification code we have just emailed you at <u>{ this.email && this.email }</u></h3>
 
         { !resend
-          ?<p className="resend" onClick={this.resendEmail.bind(this,{ email:this.email })}>Resend email verification code</p> 
-          :<p className="resended">Email verification code has been resended</p> }
+          ?<p className="resend" onClick={this.resendEmail.bind(this,{ email:this.email })}>
+              Resend email verification code
+            </p> 
+          :<p className="resended">
+              Email verification code has been resended
+            </p> }
 
         { this.props.errorMessage && 
           this.props.errorMessage.resendcode && 
-          <div className="error-container">{ this.props.errorMessage.resendcode }</div> }
+          <div className="error-container">
+              { this.props.errorMessage.resendcode }
+            </div> }
 
       </div>
     )
