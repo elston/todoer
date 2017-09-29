@@ -38,12 +38,12 @@ export default (state = {}, action) => {
         /**
          * resend verify code
          */ 
-        case enums.RESEND_VERIFYCODE_SUCCESS:
-            return { ...state, resendVerifycode:true, error: {}}
+        case enums.RESENDCODE_SUCCESS:
+            return { ...state, resendcode:true, error: {}}
 
-        case enums.RESEND_VERIFYCODE_FAIL:
-            return { ...state, resendVerifycode:false, error: { 
-                    resendVerifycode: action.payload 
+        case enums.RESENDCODE_FAIL:
+            return { ...state, resendcode:false, error: { 
+                    resendcode: action.payload 
             }}            
 
     }

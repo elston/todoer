@@ -6,7 +6,7 @@ import { dbConfig } from '../config'
 // ..
 import User from './models'
 import { tokenForUser, transporter, optForSignup } from './utils'
-
+import { AuthError } from './errors'
 /**
  * pasport
  */
@@ -114,8 +114,8 @@ export const signup = async (req, res, next) => {
     }
 
     // ..
-    const opt = optForSignup(email, firstname, user.auth.token)
     try {
+        const opt = optForSignup(email, firstname, user.auth.token)
         await transporter.sendMail(opt)
     }catch(err){
         console.log(err)
@@ -131,38 +131,41 @@ export const signup = async (req, res, next) => {
 /**
  * Resend verification code
  */
-// export const resendVerification = (req, res, next) => {
-//   const { email } = req.body;
-
-//   User.findOne({ email }, (err, user) => {
-//     if (err) { return next(err); }
-
-//     const tomorrow = new Date();
-//     tomorrow.setDate(tomorrow.getDate() + 1);
-
-//     User.findByIdAndUpdate(user.id, { auth: { used: false, token: user.auth.token, expires: tomorrow } }, (err) => {
-//       if (err) { return next(err); }
-
-//       const { firstname, email } = user;
-
-//       sendVerificationEmail(email, firstname, user.auth.token);
-
-//       res.json({ success: true });
-//     });
-//   });
-// };
-
-export const resend_verifycode = async (req, res, next) => {
-    // ..
-    const { email } = req.body
+export const resendcode = async (req, res, next) => {
+    // ...
     try {
-        const existingUser = await User.findOne({ email })        
-        if (!existingUser) {
-            return res.status(422).send({ error: "Email not find" })}        
-    }catch(err){
+
+        // 1..test
+        const { email } = req.body
+        const user = await User.findOne({ email })        
+        if (!user) {
+            throw new AuthError('User not find') }
+
+        // 2..update
+        const tomorrow = new Date()
+        tomorrow.setDate(tomorrow.getDate() + 1)
+        await User.findByIdAndUpdate(user.id, { 
+            auth: { 
+                token: user.auth.token, 
+                used: false, 
+                expires: tomorrow 
+            }
+        })        
+
+        // 3..send email
+        const opt = optForSignup(email, user.firstname, user.auth.token)
+        try {
+            await transporter.sendMail(opt) 
+        } catch(err) {
+            throw new AuthError('Email was not sended')
+        }
+        // ..
+    } catch(err) {
+        if (err instanceof AuthError){
+            return res.status(err.code).send(err.message)}
         return next(err)
     }    
-    // ...
+
     // ..
     res.json({ success: true })
 }

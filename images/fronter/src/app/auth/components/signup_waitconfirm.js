@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   return { 
     errorMessage: state.auth.error, 
     signup: state.auth.signup,
-    resend: state.auth.resendVerifycode,
+    resend: state.auth.resendcode,
   }
 }
 
@@ -24,13 +24,13 @@ export default class SignupWaitConfirm extends Component {
 
   componentWillMount() {
     // ..
-    const { signup, history:{ push }, location:{search} } = this.props
+    const { signup, history, location:{search} } = this.props
     const searchParam = search && new URLSearchParams(search)
     this.email = searchParam && searchParam.get('email')
     // ..
     // if(!signup || !this.email) {    
     if(!this.email) {
-      push('/auth/signup') 
+      history.push('/auth/signup') 
     }
   }
 
@@ -54,8 +54,8 @@ export default class SignupWaitConfirm extends Component {
           :<p className="resended">Email verification code has been resended</p> }
 
         { this.props.errorMessage && 
-          this.props.errorMessage.resendVerifycode && 
-          <div className="error-container">{ this.props.errorMessage.resendVerifycode }</div> }
+          this.props.errorMessage.resendcode && 
+          <div className="error-container">{ this.props.errorMessage.resendcode }</div> }
 
       </div>
     )

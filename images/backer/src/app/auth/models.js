@@ -50,7 +50,7 @@ userSchema.pre('save', function(next) {
             tomorrow.setDate(tomorrow.getDate() + 1)
             // ..
             user.password = hash
-            user.auth = { token: salt, used: 0, expires: tomorrow }
+            user.auth = { token: salt, used: false, expires: tomorrow }
             next()
         })
     })

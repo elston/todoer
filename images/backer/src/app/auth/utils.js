@@ -41,7 +41,7 @@ export const optForSignup = (email, firstName, token) => {
                 <h1 style='\
                     color: #5f5f5f; \
                     margin-bottom: 30px;'>\
-                    Hi, ${firstName}\
+                        Hi, ${firstName}\
                 </h1>\
                 <p style='color: #5f5f5f;'>\
                     Click the big button below to activate your account.\
@@ -55,14 +55,14 @@ export const optForSignup = (email, firstName, token) => {
                     border-radius: 5px; \
                     margin-top: 20px; \
                     display: inline-block;'>\
-                    Activate Account\
+                        Activate Account\
                 </a>\
             </div> \
             <h3 style='\
                 color: #5f5f5f; \
                 text-align: center; \
                 margin-top: 30px;'>\
-                ${from}\
+                    ${from}\
             </h3>\
         </div>\
     </div>`

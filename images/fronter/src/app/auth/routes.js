@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Signin from './components/signin'
 import Signup from './components/signup'
 import ResetPassword from './components/reset_password'
-import SignupWaitConfirm from './components/signup_wait_confirm'
+import SignupWaitConfirm from './components/signup_waitconfirm'
 
 export default () => (
   <Switch>

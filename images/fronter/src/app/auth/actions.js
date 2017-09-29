@@ -65,12 +65,12 @@ export const signupAction = (props) => {
 export const actionResendVerifycode = (props) => {
   return async (dispatch) => {
     try {
-        await axios.post('/api/auth/resend-verifycode', props)
-        await dispatch({ type: enums.RESEND_VERIFYCODE_SUCCESS })
+        await axios.post('/api/auth/resendcode', props)
+        await dispatch({ type: enums.RESENDCODE_SUCCESS })
     }catch(err){
         await dispatch({
-            type: enums.RESEND_VERIFYCODE_FAIL,
-            payload: err.response.data.error,
+            type: enums.RESENDCODE_FAIL,
+            payload: err.response.data,
         })
     }
   }
