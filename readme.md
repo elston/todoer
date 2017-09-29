@@ -116,7 +116,7 @@ make ps
 
 Some screenshots...
 --------------------------------------------------------------------
-![001](https://raw.github.com/elston/todoer/master/screenshots/00.png "00")
-![001](https://raw.github.com/elston/todoer/master/screenshots/01.png "01")
-![002](https://raw.github.com/elston/todoer/master/screenshots/02.png "02")
-![003](https://raw.github.com/elston/todoer/master/screenshots/03.png "03")
+![001](https://raw.githubusercontent.com/elston/todoer/master/screenshots/00.jpg "00")
+![001](https://raw.githubusercontent.com/elston/todoer/master/screenshots/01.png "01")
+![002](https://raw.githubusercontent.com/elston/todoer/master/screenshots/02.png "02")
+![003](https://raw.githubusercontent.com/elston/todoer/master/screenshots/03.png "03")
