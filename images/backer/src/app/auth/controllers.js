@@ -195,9 +195,7 @@ export const verifycode = async (req, res, next) => {
         // 2..update
         await User.findByIdAndUpdate(user.id, { 
             role: 1, 
-            auth: { 
-                used: true 
-            } 
+            auth: { used: true } 
         })  
 
         // ..3 return 
@@ -205,8 +203,10 @@ export const verifycode = async (req, res, next) => {
 
     } catch(err) {
         if (err instanceof VerifyCodeError){
-            return res.status(err.code).send({
-                message:err.message, allowresend:err.allowresend })}
-        return next(err) 
+            res.status(err.code).send({
+                message:err.message, allowresend:err.allowresend })
+        }else{
+            next(err)
+        }
     }
 }
