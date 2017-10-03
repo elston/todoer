@@ -23,6 +23,12 @@ export default (state = {}, action) => {
             return { ...state, authenticated: false, error: { signin: action.payload } }
 
         /**
+         * signout
+         */
+        case enums.SIGNOUT:
+            return { ...state, authenticated: false, error: {} }
+
+        /**
          * sign up
          */ 
         case enums.SIGNUP_SUCCESS:

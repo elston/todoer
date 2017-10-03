@@ -4,7 +4,7 @@ export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
 export const SIGNIN_FAIL = 'SIGNIN_FAIL'
 
 // UNAUTH
-export const UNAUTH_USER = 'UNAUTH_USER'
+export const SIGNOUT = 'SIGNOUT'
 
 // ..SIGNUP
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'

@@ -5,6 +5,6 @@ import Index from './components'
 
 export default () => (
   <Switch>
-    <Route exact path='/' component={Index} />
+    <Route exact path='/dashboard' component={Index} />
   </Switch>
 )

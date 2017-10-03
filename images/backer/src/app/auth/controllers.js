@@ -74,6 +74,7 @@ passport.use(jwtLogin)
 
 // ..
 export const requireSignin = passport.authenticate('local', { session: false })
+export const requireAuth = passport.authenticate('jwt', { session: false })
 
 /**
  * Sign in

@@ -24,11 +24,9 @@ export const signinAction = (props) => {
     return async (dispatch) => {
         try {
             const res = await axios.post('/api/auth/signin', { email, password })
-            // localStorage.setItem('user', JSON.stringify(res.data))
-            // dispatch({ type: SIGNIN_SUCCESS })
-            // browserHistory.push('/dushboard
-            console.log(res.data)
-            dispatch(push('/'))            
+            localStorage.setItem('user', JSON.stringify(res.data))
+            await dispatch({ type: enums.SIGNIN_SUCCESS })
+            await dispatch(push('/dashboard'))            
         } catch(err) {
             console.log(err)
             dispatch({
@@ -39,6 +37,15 @@ export const signinAction = (props) => {
     }           
 }
 
+/**
+ * Sign out
+ */
+export const actionSignout = () => {
+    return async (dispatch) => {
+        localStorage.clear()
+        await dispatch({type: enums.SIGNOUT})
+    }
+}
 
 
 /**
@@ -91,3 +98,5 @@ export const actionVerifycode = (props) => {
     }
   }
 }
+
+
